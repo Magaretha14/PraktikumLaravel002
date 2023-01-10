@@ -17,7 +17,29 @@ Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="a
         <center>
             <h1 class="my-4">Halaman Data Pegawai</h1>
         </center>
+
+        <center> 
+        <div class="col-4 my-4">
+                    <form class="d-flex" action="/pegawai/cari" method="GET">
+                        <input name="cari" class="form-control me-2" type="text" placeholder="Search"
+                            aria-label="Search" value="{{ old('cari') }}">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+        </center>
+        
         <div class="card mb-3">
+
+        {{-- pemberitahuan jika data tidak ditemukan --}}
+                    @if ($pegawai->count() > 0)
+                    @else
+                    <center>
+                        <font color="red">
+                            <h3>!! Tidak ditemukan data yang sesuai dengan kata kunci !!<h3>
+                        </font>
+                    </center>
+                    @endif
+
             {{-- membuat tabel --}}
             <table class="table table-striped">
                 <thead>
